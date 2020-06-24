@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Practice</title>
+</head>
+<body>
+    <div id="app">
+   <input type="text" v-model="price">
+   <p>Tax Amount {{ moneyformat(tax) }}</p>
+   <p>Total Amount {{ moneyformat(total) }}</p>
+ 
+    
+  
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+               
+               price:100
+               
+            },
+            methods:{
+               moneyformat:function(price) // function to format the amount
+               {
+                   return 'R' + price;
+               }
+            },
+            computed:{
+                tax:function()
+                {
+                    return parseInt(this.price) *0.2;
+                },
+                total:function()
+                {
+                    return parseInt(this.price) + this.tax;
+                }
+            }
+
+
+        });
+
+    </script>
+</body>
+</html>
